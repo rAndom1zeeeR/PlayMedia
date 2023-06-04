@@ -1,43 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+	<title>Play sound online</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="./css/main.css" />
+
+	<!-- Main scripts -->
+	<script defer type="text/javascript" src="./js/main.js"></script>
+
+</head>
+
+<body>
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__inner">
+
+				<div class="main__block-title">
+					<div class="main__title">
+						Play any audio
+						sources directly in
+						the browser!
+					</div>
+
+					<div class="main__subtitle">
+						Without any restrictions for free
+					</div>
+
+					<div class="main__copyright">
+						<span>By uploading the audio file, you agree to our</span>
+						<a href="#" title="Terms of Service">Terms of Service.</a>
+					</div>
+				</div>
+
+				<div class="main__block-form">
+					<div id="app"></div>
+				</div>
+
+				<div class="main__block-hidden">
+					<div class="main__subtitle">
+						Without any restrictions for free
+					</div>
+
+					<div class="main__copyright">
+						<span>By uploading the audio file, you agree to our</span>
+						<a href="#" title="Terms of Service">Terms of Service.</a>
+					</div>
+				</div>
+
+			</div>
+		</main>
+
+		<section class="works">
+			<div class="works__inner">
+
+				<div class="works__block-title">
+					<div class="works__title">
+						How It Works
+					</div>
+
+					<div class="works__subtitle">
+						Lorem Ipsum is a "fish" text often used in print and web design. Lorem Ipsum has been the standard "fish"
+						for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection
+						of
+						font sizes and shapes, using Lorem Ipsum for print samples.
+					</div>
+
+				</div>
+
+				<div class="works__block-schema">
+					<div class="schema__server schema__server--work"></div>
+
+					<div class="schema__servers">
+						<div class="schema__server schema__server--aws">
+							<svg xmlns="http://www.w3.org/2000/svg" width="88" height="54" viewBox="0 0 88 54" fill="none">
+								<path fill="#fff"
+										d="M81.324 2.428c-.71-.453-2.49-1.038-3.927-1.29-1.09-.192-3.648-.336-4.214-.239-.169.03-.695.114-1.168.188-2.03.318-4.22 1.444-5.387 2.77-1.16 1.32-1.808 3.01-1.806 4.708.003 1.886.721 3.621 2.066 4.99 1.01 1.029 2.361 1.76 4.574 2.478.845.274 2.242.725 3.104 1.002 2.017.648 2.89 1.098 3.514 1.811 1.319 1.509.766 3.758-1.171 4.762-2.225 1.153-6.665.913-10.173-.549-1.95-.813-2.322-.574-2.255 1.444.047 1.387.19 1.677 1.096 2.213 1.888 1.116 5.478 1.82 8.578 1.682 3.281-.146 5.674-1.08 7.4-2.889 1.511-1.583 2.1-3.022 2.12-5.18.014-1.642-.26-2.631-1.084-3.914-1.071-1.667-2.3-2.369-6.678-3.814-4.45-1.469-5.387-1.968-5.94-3.167-.53-1.152-.12-2.79.884-3.521 1.764-1.287 6.445-1.252 9.334.069.37.17.903.34 1.182.378.752.104.91-.187.91-1.664 0-1.392-.152-1.752-.959-2.268ZM32.56 2.48c-.1-.193-.3-.46-.447-.593-.236-.215-.489-.249-2.195-.288-1.637-.038-1.971-.014-2.206.157-.4.292-.359.965.164 2.664.24.783.484 1.591.54 1.795.12.442.995 3.35 2.214 7.366.486 1.6.929 3.077.984 3.281.056.204.383 1.305.728 2.445a5586.493 5586.493 0 0 1 2.063 6.83c.424 1.395.742 1.558 3.053 1.558 1.822 0 2.358-.13 2.698-.653.187-.286.483-1.43 1.66-6.404l.822-3.466c1.552-6.521 1.861-7.839 1.95-8.295.13-.681.196-.867.306-.867.056 0 .28.766.496 1.703.216.936.605 2.565.864 3.62.46 1.871.618 2.531 1.53 6.376.242 1.022.494 2.053.56 2.29.065.24.339 1.367.608 2.507.269 1.14.578 2.245.686 2.455.311.607.794.734 2.789.733 1.525 0 1.808-.032 2.15-.242.564-.346.617-.48 1.95-4.833.156-.51.615-1.987 1.02-3.28.405-1.295.94-3.022 1.19-3.839.249-.817.618-2.015.82-2.661.201-.647.418-1.344.48-1.548.117-.382.794-2.563 1.441-4.642 1.313-4.22 1.336-4.326 1.022-4.715-.236-.293-.28-.3-2.132-.3-1.204 0-1.842-.03-2.262.258-.523.358-.707 1.21-1.224 3.23-.31 1.214-.703 2.737-.871 3.384-.653 2.511-2.293 8.914-3.106 12.132-.18.715-.379 1.3-.44 1.3-.062 0-.24-.557-.395-1.238a407.51 407.51 0 0 0-.71-3.033c-.535-2.238-1.643-6.99-2.354-10.09-1.207-5.26-1.25-5.403-1.76-5.74-.252-.166-.654-.202-2.22-.202-2.434 0-2.675.126-3.021 1.583-.085.355-.438 1.87-.786 3.369a869.75 869.75 0 0 1-.929 3.961c-.163.681-.431 1.823-.597 2.538-.166.715-.556 2.386-.868 3.714a715.163 715.163 0 0 0-.847 3.652c-.154.681-.333 1.227-.397 1.214-.064-.013-.652-2.158-1.306-4.766l-2.363-9.406c-.645-2.565-1.253-4.822-1.352-5.014ZM87.025 35.258c-.217-.422-1.082-.821-2.324-1.074-.484-.098-1.82-.201-2.97-.228-2.168-.051-2.342-.043-3.874.192-.82.125-1.254.224-2.644.601-.64.174-1.34.456-2.16.871-1.673.849-2.316 1.485-1.95 1.929.026.032.044.06.067.083.134.136.447.097 3.92-.214 4.731-.424 7.229-.143 7.9.89.351.542.268 2.259-.196 4.002-.38 1.43-1.162 3.75-1.916 5.688-.508 1.304-.559 1.522-.417 1.777.488.877 2.786-1.36 4.379-4.262.629-1.146 1.445-3.24 1.823-4.675.537-2.044.721-4.88.362-5.58Z" />
+								<path fill="#fff"
+										d="M3.086 36.668c-.71-.394-1.43-.791-1.6-.883-1.008-.544-1.691.375-.906 1.22.527.567 2.99 2.618 4.596 3.828 2.224 1.676 4.527 3.178 7.194 4.695.596.338 4.063 2.08 4.92 2.471 2 .914 5.922 2.338 8.485 3.082 6.294 1.826 14.055 2.724 20.549 2.378 3.652-.195 6.64-.531 8.904-1.001.305-.063.886-.182 1.292-.263 4.814-.964 10.004-2.662 14.187-4.642.633-.3 1.173-.546 1.199-.546.1 0 3.38-1.862 4.363-2.478 1.69-1.057 2.951-2.012 3.136-2.372.27-.527.213-.947-.186-1.35-.487-.49-1.153-.485-2.36.017-5.596 2.329-13.29 4.54-18.478 5.31-.415.062-1.336.203-2.046.314-3.857.603-7.231.82-12.36.793-2.366-.012-4.801-.068-5.41-.124-4.363-.402-4.893-.466-8.055-.98-4.44-.723-8.539-1.731-13.159-3.238-2.035-.664-5.355-1.915-6.825-2.572l-1.537-.686c-1.41-.628-4.323-2.095-5.903-2.973Z" />
+								<path fill="#fff" fill-rule="evenodd"
+										d="M16.613.958c4.642.492 7.047 2.53 7.956 6.743.148.685.204 2.29.269 7.676.064 5.324.119 6.89.25 7.18.09.204.358.79.592 1.3.5 1.086.606 1.597.41 1.965-.077.147-.678.628-1.334 1.07-1.294.871-1.884 1.015-2.47.602-.38-.268-1.234-1.458-1.614-2.25-.17-.353-.373-.641-.453-.642-.08-.002-.468.308-.861.689-1.504 1.451-3.35 2.416-5.442 2.843-1.432.292-3.913.198-5.05-.19-1.38-.472-2.113-.904-2.947-1.735-1.503-1.497-2.141-3.199-2.136-5.695.003-1.352.046-1.672.338-2.538.55-1.631 1.229-2.61 2.557-3.683 1.2-.969 2.495-1.528 4.376-1.89 1.715-.331 4.75-.194 7.28.328.373.077.871.146 1.108.155l.43.014-.025-1.687c-.058-4.002-1.013-5.425-4.032-6.01-1.182-.229-3.211-.168-4.655.14-1.085.232-2.967.825-3.709 1.17-.27.126-.72.267-.998.314-.606.102-.857-.09-.98-.748-.139-.745.007-2.345.247-2.714.466-.716 3.831-1.96 6.159-2.277 2.024-.275 3.086-.305 4.734-.13ZM9.98 17.372c.675-.743 1.411-1.12 2.685-1.376 1.098-.22 2.625-.223 4.322-.007 1.918.245 2.73.414 2.855.596.137.2 0 2.462-.204 3.342-.422 1.828-2.139 3.458-4.282 4.066-1.459.414-3.452.415-4.366.002-1.359-.613-2.052-1.876-2.046-3.728.003-1.27.292-2.075 1.036-2.895Z"
+										clip-rule="evenodd" />
+							</svg>
+						</div>
+
+						<div class="schema__server schema__server--cloud">
+							<svg xmlns="http://www.w3.org/2000/svg" width="85" height="56" viewBox="0 0 85 56" fill="none">
+								<path fill="#fff"
+										d="M69.381 19.134a1.372 1.372 0 0 0-.436-.163 14.18 14.18 0 0 0-1.81-.198C64.158 7.953 54.073.211 42.727.211 28.762.211 17.4 11.516 17.4 25.411c0 .757.04 1.518.116 2.295a9.262 9.262 0 0 0-2.805-.277l-.02-.001c-.018 0-.035.003-.053.003h-.05l-.012.002c-7.642.06-13.84 6.261-13.84 13.881 0 7.658 6.26 13.889 13.953 13.889h15.666c.095 0 .188-.01.278-.028.07.011.141.022.215.022 11.414 0 13.81-7.831 13.81-14.4v-1.354l4.085 3.352 1.672-2.222-6.241-4.962c-.012-.009-.025-.014-.037-.022a1.281 1.281 0 0 0-.133-.079c-.037-.02-.074-.041-.112-.057-.041-.019-.083-.03-.126-.044a1.182 1.182 0 0 0-.134-.04c-.041-.008-.083-.013-.125-.019-.047-.005-.093-.012-.14-.013-.043 0-.088.003-.132.007-.044.003-.089.005-.133.014-.044.007-.089.02-.133.031-.042.012-.085.022-.127.04a1.248 1.248 0 0 0-.12.055 1.395 1.395 0 0 0-.127.068c-.014.008-.03.014-.043.022L36.038 40.5l1.57 2.295 4.26-3.4v1.402c0 7.928-3.502 11.623-11.021 11.623-.096 0-.188.01-.279.027a1.375 1.375 0 0 0-.214-.02H14.689c-6.155 0-11.164-4.986-11.164-11.113s5.009-11.11 11.164-11.11c.894 0 1.802.13 2.71.366 2.305.778 3.93 2.481 3.968 2.522.335 0 1.793-1.63 2.06-1.873-.082-.09-1.174-1.255-2.921-2.275-.2-1.224-.316-2.39-.316-3.533 0-12.364 10.11-22.424 22.537-22.424 9.881 0 18.678 6.603 21.532 15.912-3.599.497-6.135 2.072-6.281 2.164l1.5 2.342c.032-.02 2.62-1.611 6.084-1.847l.478.003c8.483.073 15.385 6.992 15.385 15.426 0 8.512-6.957 15.437-15.51 15.437H54.183v2.777h11.733c10.09 0 18.299-8.17 18.299-18.214 0-8.821-6.407-16.225-14.833-17.854Z" />
+							</svg>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		<section class="technical">
+			<div class="technical__inner">
+
+				<div class="technical__title">
+					Technical requirements
+				</div>
+
+				<div class="technical__tabs">
+					<a class="technical__tab is-actived" href="#own" data-tab="own">Own server</a>
+					<a class="technical__tab" href="#amazon" data-tab="amazon">Amazon Instance</a>
+				</div>
+
+				<div class="technical__content is-actived" data-content="own">
+					<ul>
+						<li>
+							<div class="__name">OS + apps</div>
+							<div class="__value">Unix/OSX + docker + nvidia-docker</div>
+						</li>
+						<li>
+							<div class="__name">Free space</div>
+							<div class="__value">100 GB of free space</div>
+						</li>
+						<li>
+							<div class="__name">CPU</div>
+							<div class="__value">4 cores or more (e.g. intel core i5)</div>
+						</li>
+						<li>
+							<div class="__name">Graphics hardware</div>
+							<div class="__value">GPU: NVidia only 2Gb+</div>
+						</li>
+						<li>
+							<div class="__name">Memory</div>
+							<div class="__value">16 GB RAM</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="technical__content" data-content="amazon">
+					<ul>
+						<li>
+							<div class="__name">Instance</div>
+							<div class="__value">g4dn.xlarge</div>
+						</li>
+						<li>
+							<div class="__name">Memory</div>
+							<div class="__value">16 GB RAM</div>
+						</li>
+						<li>
+							<div class="__name">GPU</div>
+							<div class="__value">1</div>
+						</li>
+						<li>
+							<div class="__name">Storage</div>
+							<div class="__value">125 GB</div>
+						</li>
+						<li>
+							<div class="__name">vCPUs</div>
+							<div class="__value">4</div>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</section>
+
+	</div>
+
+</body>
+
 </html>
