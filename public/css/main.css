@@ -182,8 +182,28 @@ section {
 	position: relative;
 }
 
+.main__form.is-success {
+	display: none;
+}
+
 .main__block-form {
 	flex-grow: 1;
+}
+
+.main__back {
+	gap: 6px;
+	margin-bottom: 24px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.main__back:hover {
+	color: var(--color-primary);
+	cursor: pointer;
+}
+
+.main__back svg {
+	transform: rotate(180deg);
 }
 
 @media all and (min-width: 1200px) {
@@ -199,7 +219,6 @@ section {
 	}
 }
 
-/* 
 .form__label {
 	margin-bottom: 20px;
 	letter-spacing: -0.4px;
@@ -221,14 +240,23 @@ section {
 }
 
 .form__input.is-success {
-	border-color: var(--color-primary);
+	border-color: #F8D231;
 }
 
 .form__button {
 	width: 96px;
 	height: 96px;
-	background: var(--color-primary);
+	background: #F8D231;
 	cursor: pointer;
+}
+
+.form__message {
+	color: #C6A827;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: -0.3px;
+	position: absolute;
+	bottom: -24px;
 }
 
 @media all and (max-width: 479px) {
@@ -243,7 +271,7 @@ section {
 		height: 64px;
 	}
 
-} */
+}
 
 /*** How it Works ***/
 .works {
