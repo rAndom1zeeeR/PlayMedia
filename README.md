@@ -6,7 +6,7 @@
 ">" - volume up\
 "M" - mute/unmute volume\
 "{" - play slower\
-"}" - play faster\
+"}" - play faster
 
 ## Available Scripts
 
