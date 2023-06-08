@@ -4,6 +4,8 @@ import Player from './player/Player'
 import BackButton from '../BackButton'
 import isUrl from './form/isUrl'
 import isEmpty from './form/isEmpty'
+import isVideo from './form/isVideo'
+import setHistoryQuery from './form/setHistoryQuery'
 
 export default function Audio() {
 	const [showBack, setShowBack] = useState(false)
@@ -19,6 +21,7 @@ export default function Audio() {
 	const [query, setQuery] = useState('')
 	const [status, setStatus] = useState('')
 	const [message, setMessage] = useState('')
+	const [showVideo, setShowVideo] = useState(false)
 
 	function handleSubmit(event) {
 		event.preventDefault()
@@ -32,7 +35,14 @@ export default function Audio() {
 		if (isUrl(query)) {
 			setStatus('is-success')
 			setMessage('Success URL')
+
+			setHistoryQuery(query)
+
 			handleAudioUrl()
+
+			if (isVideo(query)) {
+				handleVideoUrl()
+			}
 		} else {
 			setStatus('is-error')
 			setMessage('Error URL')
@@ -49,6 +59,11 @@ export default function Audio() {
 		setShowBack(true)
 		setShowForm(false)
 		setShowPlayer(true)
+		setShowVideo(false)
+	}
+
+	function handleVideoUrl() {
+		setShowVideo(true)
 	}
 
 	return (
@@ -61,9 +76,10 @@ export default function Audio() {
 					query={query}
 					message={message}
 					status={status}
+					setQuery={setQuery}
 				/>
 			)}
-			{showPlayer && <Player query={query} />}
+			{showPlayer && <Player query={query} showVideo={showVideo} />}
 		</StrictMode>
 	)
 }

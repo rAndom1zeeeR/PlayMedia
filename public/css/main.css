@@ -259,6 +259,40 @@ section {
 	bottom: -24px;
 }
 
+.form__history {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	margin: 0;
+	padding: 2px 8px;
+	list-style: none;
+	width: calc(100% - 96px);
+	background: #FFFFFF;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	z-index: 2;
+}
+
+.form__history li {
+	padding: 12px 0;
+	color: #A4A3A4;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 28px;
+	letter-spacing: -0.4px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.form__history li:hover {
+	color: var(--color-black);
+	cursor: pointer;
+}
+
+.form__history li:nth-child(n + 2) {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 @media all and (max-width: 479px) {
 	.form__input {
 		width: calc(100% - 64px);
@@ -269,6 +303,10 @@ section {
 	.form__button {
 		width: 64px;
 		height: 64px;
+	}
+
+	.form__history {
+		width: calc(100% - 64px);
 	}
 
 }

@@ -1,13 +1,28 @@
 .player {
-	gap: 50px;
 	width: 100%;
-	padding: 20px;
 	background: #CFD3D6;
+	position: relative;
+}
+
+.player__controls {
+	gap: 50px;
+	padding: 20px;
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
+
+}
+
+.player__video {
+	width: 100%;
+	max-height: 400px;
+}
+
+.player__video[poster]{
+	height:100%;
+	width:100%;
 }
 
 .player__play {
@@ -111,6 +126,14 @@ input.player__volume[type="range"] {
 input.player__volume[type="range"]::-webkit-slider-thumb {
 	background: #1B191C;
 	border-radius: 0;
+}
+
+.error__message {
+	color: #C6A827;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: -0.3px;
+	margin-bottom: 16px;
 }
 
 /* .player input[type="range"]::-webkit-slider-runnable-track {

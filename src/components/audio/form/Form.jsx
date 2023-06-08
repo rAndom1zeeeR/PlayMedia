@@ -1,4 +1,23 @@
-export default function Form({ onSubmit, onChange, query, status, message }) {
+import { useRef, useState } from 'react'
+import { getHistoryQuery } from './setHistoryQuery'
+export default function Form({ onSubmit, onChange, query, status, message, setQuery }) {
+	const history = getHistoryQuery().slice(0, 4)
+
+	const [focus, setFocus] = useState(false)
+	const queryInput = useRef(null)
+
+	function handleHistory(event) {
+		queryInput.current.value = event.target.innerText
+		setQuery(event.target.innerText)
+		setFocus(false)
+	}
+
+	const listItems = history.map(item => (
+		<li key={item.toString()} onClick={handleHistory}>
+			{item}
+		</li>
+	))
+
 	return (
 		<form className='main__form' action='' method='post' onSubmit={onSubmit}>
 			<label className='form__label'>Insert the link</label>
@@ -8,7 +27,14 @@ export default function Form({ onSubmit, onChange, query, status, message }) {
 				placeholder='https://'
 				value={query}
 				onChange={onChange}
+				onFocus={e => setFocus(true)}
+				// onBlur={e => setFocus(false)}
+				ref={queryInput}
 			/>
+
+			{focus && <ul className='form__history'>{listItems}</ul>}
+			{/* <ul className='form__history'>{listItems}</ul> */}
+
 			<button className='form__button' type='submit'>
 				<svg xmlns='http://www.w3.org/2000/svg' width='40' height='36' fill='none'>
 					<path

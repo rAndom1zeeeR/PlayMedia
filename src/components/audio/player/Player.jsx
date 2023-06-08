@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { StrictMode, useEffect, useRef, useState } from 'react'
 import './Player.css'
+import Shortcut from './Shortcut'
 
-export default function Player({ query }) {
+export default function Player({ query, showVideo }) {
 	const [timer, setTimer] = useState('')
 	const [volume, setVolume] = useState('')
 	const [duration, setDuration] = useState('')
 	const [loading, setLoading] = useState(true)
+	const [message, setMessage] = useState('')
 
 	const refPlayer = useRef(null)
 	const refTimeline = useRef(null)
@@ -49,7 +51,10 @@ export default function Player({ query }) {
 	}
 
 	function handleSeek(event) {
-		const time = parseInt(event.target.value * duration) / 100
+		// IF Stream
+		if (duration === Infinity) return false
+
+		let time = parseInt(event.target.value * duration) / 100
 		refPlayer.current.currentTime = time.toFixed(0)
 		setTimer(time.toFixed(0))
 	}
@@ -61,11 +66,14 @@ export default function Player({ query }) {
 	}
 
 	function handlelinePosition(current, duration, line) {
+		// IF moving back when playing
 		if (line === null) return false
+		// IF Stream
+		if (duration === Infinity) duration = current
 
 		const position = parseInt((current / duration) * 100)
-		line.style.backgroundSize = `${position}% 100%`
 		line.value = position
+		line.style.backgroundSize = `${position}% 100%`
 	}
 
 	useEffect(() => {
@@ -75,6 +83,7 @@ export default function Player({ query }) {
 		}
 
 		refPlayer.current.onloadedmetadata = event => {
+			console.log(event.target.duration)
 			setDuration(event.target.duration)
 			refPlayer.current.volume = refVolume.current.value / 100
 			setVolume(refVolume.current.value)
@@ -85,49 +94,70 @@ export default function Player({ query }) {
 			refPlay.current.classList.remove('is-playing')
 		}
 
-		refPlayer.current.oncanplaythrough = event => {
+		refPlayer.current.onerror = event => {
+			setMessage('Error! Something went wrong. Click Back to enter new link')
+			console.log('Error! Something went wrong', event.target)
+			event.target.parentElement.style.display = 'none'
+		}
+	})
+
+	useEffect(() => {
+		refPlayer.current.oncanplay = () => {
 			setTimeout(() => {
 				setLoading(false)
 			}, 1000)
+			console.log('oncanplay')
+		}
+	})
+
+	useEffect(() => {
+		refPlayer.current.onloadeddata = () => {
+			console.log('onloadeddata')
+			Shortcut(refPlayer.current, refVolume.current)
 		}
 	})
 
 	return (
-		<div className='player'>
-			{loading && <div className='player__preloader'></div>}
+		<StrictMode>
+			{message && <div className='error__message'>{message}</div>}
 
-			<audio
-				className='player__audio'
-				preload='auto'
-				src={query}
-				ref={refPlayer}
-				type='audio/mp3'></audio>
+			<div className='player'>
+				{loading && <div className='player__preloader'></div>}
 
-			<div className='player__play' ref={refPlay} onClick={handlePlayerButton}></div>
+				{showVideo ? (
+					<video className='player__video' preload='auto' src={query} ref={refPlayer}></video>
+				) : (
+					<audio className='player__audio' preload='auto' src={query} ref={refPlayer}></audio>
+				)}
 
-			<input
-				className='player__timeline'
-				type='range'
-				defaultValue='0'
-				min='0'
-				max='100'
-				step='1'
-				ref={refTimeline}
-				onChange={handleSeek}
-			/>
+				<div className='player__controls'>
+					<div className='player__play' ref={refPlay} onClick={handlePlayerButton}></div>
 
-			<div className='player__timer'>{timer || '00:00'}</div>
+					<input
+						className='player__timeline'
+						type='range'
+						defaultValue='0'
+						min='0'
+						max='100'
+						step='1'
+						ref={refTimeline}
+						onChange={handleSeek}
+					/>
 
-			<input
-				className='player__volume'
-				type='range'
-				min='0'
-				max='100'
-				step='1'
-				defaultValue={volume}
-				ref={refVolume}
-				onChange={handleVolume}
-			/>
-		</div>
+					<div className='player__timer'>{timer || '00:00'}</div>
+
+					<input
+						className='player__volume'
+						type='range'
+						min='0'
+						max='100'
+						step='1'
+						defaultValue={volume}
+						ref={refVolume}
+						onChange={handleVolume}
+					/>
+				</div>
+			</div>
+		</StrictMode>
 	)
 }
